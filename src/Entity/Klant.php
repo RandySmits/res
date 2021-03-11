@@ -30,7 +30,8 @@ class Klant
     private $telefoon;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservering::class, mappedBy="klantId")
+     * @ORM\OneToMany(targetEntity=Reservering::class, mappedBy="klantId", cascade={"persist", "remove"})
+    )
      */
     private $reserverings;
 

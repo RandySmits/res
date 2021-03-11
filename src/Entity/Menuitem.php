@@ -20,7 +20,8 @@ class Menuitem
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Subgerecht::class, inversedBy="menuitems")
+     * @ORM\ManyToOne(targetEntity=Subgerecht::class, inversedBy="menuitems", cascade={"persist", "remove"})
+    )
      */
     private $subgerechtId;
 

@@ -25,7 +25,8 @@ class Subgerecht
     private $gerechtId;
 
     /**
-     * @ORM\OneToMany(targetEntity=Menuitem::class, mappedBy="subgerechtId")
+     * @ORM\OneToMany(targetEntity=Menuitem::class, mappedBy="subgerechtId", cascade={"persist", "remove"})
+    )
      */
     private $menuitems;
 

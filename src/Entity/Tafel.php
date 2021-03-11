@@ -30,7 +30,8 @@ class Tafel
     private $maxpersonen;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservering::class, mappedBy="tafelId")
+     * @ORM\OneToMany(targetEntity=Reservering::class, mappedBy="tafelId", cascade={"persist", "remove"})
+    )
      */
     private $reserverings;
 

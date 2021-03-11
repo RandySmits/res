@@ -20,12 +20,14 @@ class Reservering
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Klant::class, inversedBy="reserverings")
+     * @ORM\ManyToOne(targetEntity=Klant::class, inversedBy="reserverings", cascade={"persist", "remove"})
+    )
      */
     private $klantId;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Tafel::class, inversedBy="reserverings")
+     * @ORM\ManyToOne(targetEntity=Tafel::class, inversedBy="reserverings", cascade={"persist", "remove"})
+    )
      */
     private $tafelId;
 

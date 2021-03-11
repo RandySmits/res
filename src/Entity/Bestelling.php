@@ -18,12 +18,14 @@ class Bestelling
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Menuitem::class, inversedBy="bestellings")
+     * @ORM\ManyToOne(targetEntity=Menuitem::class, inversedBy="bestellings", cascade={"persist", "remove"})
+    )
      */
     private $menuitemId;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Reservering::class, inversedBy="bestellings")
+     * @ORM\ManyToOne(targetEntity=Reservering::class, inversedBy="bestellings", cascade={"persist", "remove"})
+    )
      */
     private $reserveringId;
 

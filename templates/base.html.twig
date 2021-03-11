@@ -1,19 +1,177 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+         and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+    <style>
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: lightgreen;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            display: block;
+            border: none;
+            background: none;
+            width:100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+            color: black;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+            font-size: 20px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+            background-color: green;
+            color: black;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: lightgreen;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+        .dropdown-two {
+            cursor: pointer;
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            background-color: lightgreen;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: relative;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+        .wrapper {
+            margin-right: auto; /* 1 */
+            margin-left:  auto; /* 1 */
+
+            max-width: 960px; /* 2 */
+
+            padding-top: 10px;
+            padding-right: 10px; /* 3 */
+            padding-left:  10px; /* 3 */
+        }
+        .top-box h1{
+            margin-left: 200px;
+            position: absolute;
+            font-size: 30px;
+        }
+        .top-box{
+            position: relative;
+            width: 1400px;
+            height: 50px;
+            border: 3px solid red;
+            background-color: red;
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-box">
+        <h1>Restaurant Pablo</h1>
+    </div>
+
+<div class="sidenav">
+    <a href="{{ path ('bestelling_index') }}">Bestelling</a>
+    <a href="{{ path ('bon_index') }}">Bon</a>
+    <a href="{{ path ('gerecht_index') }}">Gerecht</a>
+    <a href="{{ path ('subgerecht_index') }}">Subgerecht</a>
+    <a href="{{ path ('menuitem_index') }}">Menu-item</a>
+    <a href="{{ path ('klant_index') }}">Klant</a>
+    <a href="{{ path ('tafel_index') }}">Tafel</a>
+    <a href="{{ path ('reservering_index') }}">Reservering</a>
+</div>
+<div class="main">
+    <div class="wrapper">
         {% block body %}{% endblock %}
-    </body>
+    </div>
+</div>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
 </html>
